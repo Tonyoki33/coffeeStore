@@ -1,0 +1,146 @@
+body {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    background-color: saddlebrown;
+}
+
+/*Vamos a dar estilo a los productos*/
+
+#productos {
+    display: flex;
+    flex-flow: row;
+    padding: 5rem;
+    text-align: center;
+    background-color: tomato;
+    height: 80rem;
+}
+
+#product_data {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 7rem;
+}
+
+#productos p {
+    margin: 0rem;
+    padding: 0rem;
+}
+
+.precio {
+    color: yellowgreen;
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+h1 {
+    color: seashell;
+    text-align: center;
+}
+
+h2 {
+    padding-top: 5rem;
+    margin: 0;
+}
+
+h3 {
+    padding-top: 0;
+    margin: 0;
+}
+
+#select {
+    display: flex;
+    flex-flow: column;
+    align-items: center;    
+    width: 8rem;
+    margin: 0 0 4rem 3rem;
+}
+
+/* Espacio de seleccion en los productos*/
+
+.select_elements {
+    height: 1rem;
+    padding: 8rem 0rem;
+}
+
+.select_form {
+    padding: 0;
+}
+
+/*Like button active*/
+
+.like_btn--active {
+    background-color: seagreen;
+    color: seashell;
+}
+
+.section {
+    display: flex;
+    
+
+}
+
+
+#wallet {
+    padding: 2rem;
+    width: 20rem;
+    text-align: center;
+    background-color: thistle;
+}
+
+#chargedWallet {
+    width: 10rem;
+    margin-right:3rem;
+    padding: 2rem;
+    text-align: center;
+    background-color: thistle;;
+}
+
+#monto-carga {
+    text-align: center;
+    width: 13rem;
+}
+
+.img_class {
+    width: 100px;
+    height: 100px;
+}
+
+.link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3rem 0;
+    padding: 0.5rem;
+}
+
+a {
+    text-decoration: none;
+    color: seashell;
+}
+
+/* carrito */
+
+.section_carrito {
+    display: flex;
+    flex-flow: column;
+    margin: 3rem 0;
+    padding: 2rem;
+    width: 37rem;
+    text-align: center;
+    background-color: thistle;
+}
+
+.seccion_carrito--inactive {
+    height: 20px;
+    overflow: hidden;
+}
+
+
+.btn_openCarrito--active {
+    background-color: seagreen;
+    color: seashell;
+}
