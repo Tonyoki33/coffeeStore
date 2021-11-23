@@ -343,7 +343,7 @@ $("#btn_openCarrito").on("click", function (e) {
     carrito_section.toggleClass("seccion_carrito--inactive");
     $("#btn_openCarrito").toggleClass("btn_openCarrito--active");
     $("#carrito_compra h2").animate({
-        "opacity": "0.5"
+        "opacity": "0.6"
     }
     );
 })
