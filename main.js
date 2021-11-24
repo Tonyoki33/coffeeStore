@@ -365,4 +365,6 @@ $("#btn_openCarrito").on("click", function (e) {
         "opacity": "0.6"
     }
     );
+
 })
+

@@ -144,3 +144,26 @@ a {
     background-color: seagreen;
     color: seashell;
 }
+
+/* Creamos clases para mostrar los nuevos comentarios de usuarios llamados desde una api*/
+
+
+#comentariosUsuarios {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.user_comments {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    margin: 3rem 0;
+    background-color: thistle;
+}
+
+.user_comments p {
+    text-align: center;
+}
