@@ -276,8 +276,8 @@ $(() => {
     }
 
     // charge-btn enviará la información de los fondos al localStorage
-    ////    Luego de enviar la informacion, cambiaremos las clases de en todos los divs de la cartera
-    //////      luego imprimiremos esa información en la wallet
+    ////    Luego de enviar la informacion, cambiaremos las clases de en todos los divs de la wallet
+    //////      luego traeremos por medio de la funcion imprimirFondos() la info y la imprimiremos en la wallet
     ////////      Para finalizar haremos que ese monto impreso se pueda sumar y restar con las compras
 
     $("#charge-btn").on("click", function (e) {
