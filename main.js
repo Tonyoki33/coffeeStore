@@ -178,7 +178,6 @@ $(() => {
     selectBtnSumatra.onclick = (e) => {
         e.preventDefault();
         bolsasCafe[0].calcularStock(selectSumtara.value, `stock_atribute--${bolsasCafe[0].variedad}`);
-        bolsasCafe[0].calculoFondos(nuevoMonto, bolsasCafe[0].calcularPrecio(selectSumtara.value));
         console.log(guardarCompra(bolsasCafe[0].variedad, selectSumtara.value));
 
         enviarCarrito(bolsasCafe[0].variedad, selectSumtara.value, bolsasCafe[0].calcularPrecio(selectSumtara.value));
@@ -200,7 +199,6 @@ $(() => {
     selectBtnColombia.onclick = (e) => {
         e.preventDefault();
         bolsasCafe[1].calcularStock(selectColombia.value, `stock_atribute--${bolsasCafe[1].variedad}`);
-        bolsasCafe[1].calculoFondos(nuevoMonto, bolsasCafe[1].calcularPrecio(selectColombia.value));
         console.log(guardarCompra(bolsasCafe[1].variedad, selectColombia.value));
 
         enviarCarrito(bolsasCafe[1].variedad, selectColombia.value, bolsasCafe[1].calcularPrecio(selectColombia.value));
@@ -221,7 +219,6 @@ $(() => {
     selectBtnPeru.onclick = (e) => {
         e.preventDefault();
         bolsasCafe[2].calcularStock(selectPeru.value, `stock_atribute--${bolsasCafe[2].variedad}`);
-        bolsasCafe[2].calculoFondos(nuevoMonto, bolsasCafe[2].calcularPrecio(selectPeru.value));
         console.log(guardarCompra(bolsasCafe[2].variedad, selectPeru.value));
 
         enviarCarrito(bolsasCafe[2].variedad, selectPeru.value, bolsasCafe[2].calcularPrecio(selectPeru.value));
@@ -241,7 +238,6 @@ $(() => {
     selectBtnGuatemala.onclick = (e) => {
         e.preventDefault();
         bolsasCafe[3].calcularStock(selectGuatemala.value, `stock_atribute--${bolsasCafe[3].variedad}`);
-        bolsasCafe[3].calculoFondos(nuevoMonto, bolsasCafe[3].calcularPrecio(selectGuatemala.value));
         console.log(guardarCompra(bolsasCafe[3].variedad, selectGuatemala.value));
 
         enviarCarrito(bolsasCafe[3].variedad, selectGuatemala.value, bolsasCafe[3].calcularPrecio(selectGuatemala.value));
@@ -263,7 +259,6 @@ $(() => {
     selectBtnBrasil.onclick = (e) => {
         e.preventDefault();
         bolsasCafe[4].calcularStock(selectBrasil.value, `stock_atribute--${bolsasCafe[4].variedad}`);
-        bolsasCafe[4].calculoFondos(nuevoMonto, bolsasCafe[4].calcularPrecio(selectBrasil.value));
         console.log(guardarCompra(bolsasCafe[4].variedad, selectBrasil.value));
 
         enviarCarrito(bolsasCafe[4].variedad, selectBrasil.value, bolsasCafe[4].calcularPrecio(selectBrasil.value));
@@ -300,8 +295,6 @@ $(() => {
         $("#chargedWallet p:first-child").css({
             "display": "none",
         });
-        
-
     })
 
 
