@@ -63,12 +63,6 @@ $(() => {
         }
     }
 
-    class Fondos {
-        constructor(cantidad) {
-            this.cantidad = cantidad;
-        }
-        
-    }
 
 
 
@@ -76,8 +70,6 @@ $(() => {
     //definimos las variables
 
     let bolsasCafe = [];
-
-    let nuevosFondos = [];
 
     let selectoresHistorial = [];
 
@@ -112,7 +104,9 @@ $(() => {
     const selectBtnBrasil = document.querySelector("#btn_brasil");
 
     const chargeBtn = document.querySelector("#charge-btn");
-    const nuevoMonto = document.querySelector("#monto-carga");
+
+
+
     // jQuery section
 
     const likeSumatra = $("#like_btn--sumatra");
@@ -151,30 +145,13 @@ $(() => {
 
     //  definimos funciones
     ////    Enviaremos y codificaremos el array de precios
-    const printNewFunds = () => {
 
+
+    const imprimirFondos = () => {
+        let verificarMonto = 0;
+        verificarMonto = JSON.parse(localStorage.getItem("nuevoMonto"));
+        return verificarMonto;
     }
-
-
-    const addDataByJSON = () => {     
-        let newFunds_JSON = [];
-        let total = 0;
-        nuevosFondos.push(new Fondos($("#monto-carga").val()));
-        localStorage.setItem("nuevosFondos", JSON.stringify(nuevosFondos));
-        newFunds_JSON.push(new Fondos (JSON.parse(localStorage.getItem("nuevosFondos"))));
-        newFunds_JSON.forEach(function(el){
-            total += el.cantidad;
-        
-        });
-        console.log(total)
-        $("#chargedWallet").append(
-            `<p>${total}</p>`
-        )
-
-
-    }
-
-    
 
 
     const guardarCompra = (variedad, compra) => {
@@ -189,6 +166,7 @@ $(() => {
         let nuevoArticulo = (new CarritoCompras(variedad, cantidad, precio));
         carroCompras.push(nuevoArticulo);
     }
+
 
 
     //definimos los eventos
@@ -248,7 +226,6 @@ $(() => {
 
         enviarCarrito(bolsasCafe[2].variedad, selectPeru.value, bolsasCafe[2].calcularPrecio(selectPeru.value));
         console.log(carroCompras);
-
         carroCompras.forEach(el => {
             $("#articulos").append(
                 `
@@ -303,19 +280,28 @@ $(() => {
         });
     }
 
-    // charge-btn enviará por medio del array nuevosFondos la información al localStorage
-    ////    luego imprimiremos esa información en la wallet
-    //////      Para finalizar haremos que ese monto impreso se pueda sumar y restar con las compras
+    // charge-btn enviará la información de los fondos al localStorage
+    ////    Luego de enviar la informacion, cambiaremos las clases de en todos los divs de la cartera
+    //////      luego imprimiremos esa información en la wallet
+    ////////      Para finalizar haremos que ese monto impreso se pueda sumar y restar con las compras
 
     $("#charge-btn").on("click", function (e) {
         e.preventDefault();
+        //1
+        localStorage.setItem("nuevoMonto", JSON.stringify(($("#monto-carga").val())));
+        imprimirFondos();
+        //2
+        $("#wallet").addClass("walletOff");
+        $("#chargedWallet").addClass("chargedWallet_on");
+        //3
+        $("#chargedWallet").append(`
+        <p>${imprimirFondos()}$</p>
+        `);
+        $("#chargedWallet p:first-child").css({
+            "display": "none",
+        });
         
-        console.log(nuevosFondos);
-        addDataByJSON();
-      
 
-        // saveFunds(nuevoMonto)
-        // console.log(nuevosFondos);
     })
 
 
@@ -362,8 +348,7 @@ $("#btn_openCarrito").on("click", function (e) {
     carrito_section.toggleClass("seccion_carrito--inactive");
     $("#btn_openCarrito").toggleClass("btn_openCarrito--active");
     $("#carrito_compra h2").animate({
-        "opacity": "0.6"
-    }
+        "opacity": "0.6"}
     );
 
 })

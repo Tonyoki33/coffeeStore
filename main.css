@@ -90,14 +90,26 @@ h3 {
     text-align: center;
     background-color: thistle;
 }
+.walletOff {
+    display: none;
+}
 
-#chargedWallet {
+.chargedWallet_off{
     width: 10rem;
     margin-right:3rem;
     padding: 2rem;
     text-align: center;
     background-color: thistle;;
 }
+
+.chargedWallet_on{
+    width: 37rem;
+    margin-right:3rem;
+    padding: 2rem;
+    text-align: center;
+    background-color: thistle;;
+}
+
 
 #monto-carga {
     text-align: center;
