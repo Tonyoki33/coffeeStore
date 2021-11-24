@@ -67,6 +67,7 @@ $(() => {
         constructor(cantidad) {
             this.cantidad = cantidad;
         }
+        
     }
 
 
@@ -112,7 +113,6 @@ $(() => {
 
     const chargeBtn = document.querySelector("#charge-btn");
     const nuevoMonto = document.querySelector("#monto-carga");
-
     // jQuery section
 
     const likeSumatra = $("#like_btn--sumatra");
@@ -149,15 +149,32 @@ $(() => {
     })
 
 
-    // definimos funciones
+    //  definimos funciones
+    ////    Enviaremos y codificaremos el array de precios
+    const printNewFunds = () => {
 
-
-
-    const imprimirFondos = (valor) => {
-        let yourFunds = valor.value;
-        document.getElementById("chargedWallet").innerHTML = `<p>${yourFunds}$</p>`;
-        return yourFunds;
     }
+
+
+    const addDataByJSON = () => {     
+        let newFunds_JSON = [];
+        let total = 0;
+        nuevosFondos.push(new Fondos($("#monto-carga").val()));
+        localStorage.setItem("nuevosFondos", JSON.stringify(nuevosFondos));
+        newFunds_JSON.push(new Fondos (JSON.parse(localStorage.getItem("nuevosFondos"))));
+        newFunds_JSON.forEach(function(el){
+            total += el.cantidad;
+        
+        });
+        console.log(total)
+        $("#chargedWallet").append(
+            `<p>${total}</p>`
+        )
+
+
+    }
+
+    
 
 
     const guardarCompra = (variedad, compra) => {
@@ -292,9 +309,11 @@ $(() => {
 
     $("#charge-btn").on("click", function (e) {
         e.preventDefault();
-        nuevosFondos.push(new Fondos($("#monto-carga").val()));
+        
         console.log(nuevosFondos);
-        // imprimirFondos(nuevoMonto);
+        addDataByJSON();
+      
+
         // saveFunds(nuevoMonto)
         // console.log(nuevosFondos);
     })
