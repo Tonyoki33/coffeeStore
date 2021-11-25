@@ -61,7 +61,7 @@ $(() => {
 
     let bolsasCafe = [];
 
-    let carroCompras = [];
+    let carroCompras = [[]];
 
     bolsasCafe.push(new Productos(0, "Sumatra", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHv3Tsc4BvdyNweyONNC7QI6XU9Z1GfuZLgA&usqp=CAU", 890, "oscuro", 14));
     bolsasCafe.push(new Productos(1, "Colombia", "https://st3.depositphotos.com/3246763/14277/v/600/depositphotos_142778305-stock-illustration-coffee-logo-made-from-the.jpg", 890, "medio", 14));
@@ -168,14 +168,18 @@ $(() => {
 
         enviarCarrito(bolsasCafe[0].variedad, selectSumtara.value, bolsasCafe[0].calcularPrecio(selectSumtara.value));
 
-        carroCompras.forEach(el => {
+        carroCompras.slice(1).forEach(el => {
             $("#articulos").append(
                 `
+                <div id="nuevo_articulo">
                 <h3>Bolsas de cafe ${el.variedad}</h3>
                 <p>Deseas llevar ${el.cantidad}</p>
                 <h4>Seran ${el.precio}$</h4>
+                </div>
                 `
             )
+            
+
         });
     }
 
@@ -184,8 +188,6 @@ $(() => {
     selectBtnColombia.onclick = (e) => {
         e.preventDefault();
         bolsasCafe[1].calcularStock(selectColombia.value, `stock_atribute--${bolsasCafe[1].variedad}`);
-        console.log(guardarCompra(bolsasCafe[1].variedad, selectColombia.value));
-
 
         enviarCarrito(bolsasCafe[1].variedad, selectColombia.value, bolsasCafe[1].calcularPrecio(selectColombia.value));
         console.log(carroCompras);
@@ -205,7 +207,7 @@ $(() => {
     selectBtnPeru.onclick = (e) => {
         e.preventDefault();
         bolsasCafe[2].calcularStock(selectPeru.value, `stock_atribute--${bolsasCafe[2].variedad}`);
-        console.log(guardarCompra(bolsasCafe[2].variedad, selectPeru.value));
+       
 
 
         enviarCarrito(bolsasCafe[2].variedad, selectPeru.value, bolsasCafe[2].calcularPrecio(selectPeru.value));
@@ -225,7 +227,7 @@ $(() => {
     selectBtnGuatemala.onclick = (e) => {
         e.preventDefault();
         bolsasCafe[3].calcularStock(selectGuatemala.value, `stock_atribute--${bolsasCafe[3].variedad}`);
-        console.log(guardarCompra(bolsasCafe[3].variedad, selectGuatemala.value));
+        
 
 
         enviarCarrito(bolsasCafe[3].variedad, selectGuatemala.value, bolsasCafe[3].calcularPrecio(selectGuatemala.value));
