@@ -48,13 +48,6 @@ $(() => {
 
     }
 
-    class Historial {
-        constructor(variedad, cantidad) {
-            this.variedad = variedad;
-            this.cantidad = cantidad
-        }
-    }
-
     class CarritoCompras {
         constructor(variedad, cantidad, precio) {
             this.variedad = variedad;
@@ -64,14 +57,9 @@ $(() => {
     }
 
 
-
-
-
     //definimos las variables
 
     let bolsasCafe = [];
-
-    let selectoresHistorial = [];
 
     let carroCompras = [];
 
@@ -103,7 +91,6 @@ $(() => {
     const selectBrasil = document.querySelector("#select_brasil");
     const selectBtnBrasil = document.querySelector("#btn_brasil");
 
-    const chargeBtn = document.querySelector("#charge-btn");
 
 
 
@@ -154,18 +141,15 @@ $(() => {
     }
 
 
-    const guardarCompra = (variedad, compra) => {
-        let historial = (new Historial(variedad, compra));
-        lista = JSON.parse(localStorage.getItem("selectoresHistorial"));
-        selectoresHistorial.push(historial);
-        localStorage.setItem("selectoresHistorial", JSON.stringify(selectoresHistorial));
-        return historial;
-    }
 
     const enviarCarrito = (variedad, cantidad, precio) => {
         let nuevoArticulo = (new CarritoCompras(variedad, cantidad, precio));
         carroCompras.push(nuevoArticulo);
+        localStorage.setItem("carrito", JSON.stringify(carroCompras));
+        return carroCompras;
     }
+
+ 
 
 
 
@@ -178,10 +162,11 @@ $(() => {
     selectBtnSumatra.onclick = (e) => {
         e.preventDefault();
         bolsasCafe[0].calcularStock(selectSumtara.value, `stock_atribute--${bolsasCafe[0].variedad}`);
-        console.log(guardarCompra(bolsasCafe[0].variedad, selectSumtara.value));
+
+        console.log(carroCompras);
+
 
         enviarCarrito(bolsasCafe[0].variedad, selectSumtara.value, bolsasCafe[0].calcularPrecio(selectSumtara.value));
-        console.log(carroCompras);
 
         carroCompras.forEach(el => {
             $("#articulos").append(
@@ -201,9 +186,10 @@ $(() => {
         bolsasCafe[1].calcularStock(selectColombia.value, `stock_atribute--${bolsasCafe[1].variedad}`);
         console.log(guardarCompra(bolsasCafe[1].variedad, selectColombia.value));
 
+
         enviarCarrito(bolsasCafe[1].variedad, selectColombia.value, bolsasCafe[1].calcularPrecio(selectColombia.value));
         console.log(carroCompras);
-
+        
         carroCompras.forEach(el => {
             $("#articulos").append(
                 `
@@ -220,6 +206,7 @@ $(() => {
         e.preventDefault();
         bolsasCafe[2].calcularStock(selectPeru.value, `stock_atribute--${bolsasCafe[2].variedad}`);
         console.log(guardarCompra(bolsasCafe[2].variedad, selectPeru.value));
+
 
         enviarCarrito(bolsasCafe[2].variedad, selectPeru.value, bolsasCafe[2].calcularPrecio(selectPeru.value));
         console.log(carroCompras);
@@ -239,6 +226,7 @@ $(() => {
         e.preventDefault();
         bolsasCafe[3].calcularStock(selectGuatemala.value, `stock_atribute--${bolsasCafe[3].variedad}`);
         console.log(guardarCompra(bolsasCafe[3].variedad, selectGuatemala.value));
+
 
         enviarCarrito(bolsasCafe[3].variedad, selectGuatemala.value, bolsasCafe[3].calcularPrecio(selectGuatemala.value));
         console.log(carroCompras);
