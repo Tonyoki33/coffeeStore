@@ -260,19 +260,23 @@ $(() => {
         $(this).toggleClass("like_btn--active");
         console.log(bolsasCafe[4].variedad);
     })
+
+    // Concatenando animaciones para que se oculte y se muestre el carrito
+
+
+    $("#btn_openCarrito").on("click", function (e) {
+        e.preventDefault();
+        let carrito_section = $("#carrito_compra");
+        carrito_section.toggleClass("seccion_carrito--inactive");
+        $("#btn_openCarrito").toggleClass("btn_openCarrito--active");
+        $("#carrito_compra h2").animate({
+            "opacity": "0.6"}
+        );
+
+    })
+
+
 })
 
 
-// Concatenando animaciones para que se oculte y se muestre el carrito
-
-$("#btn_openCarrito").on("click", function (e) {
-    e.preventDefault();
-    let carrito_section = $("#carrito_compra");
-    carrito_section.toggleClass("seccion_carrito--inactive");
-    $("#btn_openCarrito").toggleClass("btn_openCarrito--active");
-    $("#carrito_compra h2").animate({
-        "opacity": "0.6"}
-    );
-
-})
 
