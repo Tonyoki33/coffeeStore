@@ -173,7 +173,7 @@ $(() => {
 
         // });
     }
-
+    // soy rama
 
 
     selectBtnColombia.onclick = (e) => {
