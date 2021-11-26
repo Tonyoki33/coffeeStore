@@ -140,16 +140,11 @@ $(() => {
         return verificarMonto;
     }
 
-
-
-    const enviarCarrito = (variedad, cantidad, precio) => {
-        let nuevoArticulo = (new CarritoCompras(variedad, cantidad, precio));
-        carroCompras.push(nuevoArticulo);
-        localStorage.setItem("carrito", JSON.stringify(carroCompras));
+    const enviarCarrito = () => {
+        localStorage.setItem("carrito", JSON.stringify(bolsasCafe));
         return carroCompras;
     }
 
- 
 
 
 
@@ -162,25 +157,21 @@ $(() => {
     selectBtnSumatra.onclick = (e) => {
         e.preventDefault();
         bolsasCafe[0].calcularStock(selectSumtara.value, `stock_atribute--${bolsasCafe[0].variedad}`);
+        enviarCarrito();
 
-        console.log(carroCompras);
-
-
-        enviarCarrito(bolsasCafe[0].variedad, selectSumtara.value, bolsasCafe[0].calcularPrecio(selectSumtara.value));
-
-        carroCompras.slice(1).forEach(el => {
-            $("#articulos").append(
-                `
-                <div id="nuevo_articulo">
-                <h3>Bolsas de cafe ${el.variedad}</h3>
-                <p>Deseas llevar ${el.cantidad}</p>
-                <h4>Seran ${el.precio}$</h4>
-                </div>
-                `
-            )
+        // carroCompras.slice(1).forEach(el => {
+        //     $("#articulos").append(
+        //         `
+        //         <div id="nuevo_articulo">
+        //         <h3>Bolsas de cafe ${el.variedad}</h3>
+        //         <p>Deseas llevar ${el.cantidad}</p>
+        //         <h4>Seran ${el.precio}$</h4>
+        //         </div>
+        //         `
+        //     )
             
 
-        });
+        // });
     }
 
 
@@ -188,61 +179,21 @@ $(() => {
     selectBtnColombia.onclick = (e) => {
         e.preventDefault();
         bolsasCafe[1].calcularStock(selectColombia.value, `stock_atribute--${bolsasCafe[1].variedad}`);
-
-        enviarCarrito(bolsasCafe[1].variedad, selectColombia.value, bolsasCafe[1].calcularPrecio(selectColombia.value));
-        console.log(carroCompras);
-        
-        carroCompras.forEach(el => {
-            $("#articulos").append(
-                `
-                <h3>Bolsas de cafe ${el.variedad}</h3>
-                <p>Deseas llevar ${el.cantidad}</p>
-                <h4>Seran ${el.precio}$</h4>
-                `
-            )
-        });
+        enviarCarrito();
     }
 
 
     selectBtnPeru.onclick = (e) => {
         e.preventDefault();
         bolsasCafe[2].calcularStock(selectPeru.value, `stock_atribute--${bolsasCafe[2].variedad}`);
-       
-
-
-        enviarCarrito(bolsasCafe[2].variedad, selectPeru.value, bolsasCafe[2].calcularPrecio(selectPeru.value));
-        console.log(carroCompras);
-        carroCompras.forEach(el => {
-            $("#articulos").append(
-                `
-                <h3>Bolsas de cafe ${el.variedad}</h3>
-                <p>Deseas llevar ${el.cantidad}</p>
-                <h4>Seran ${el.precio}$</h4>
-                `
-            )
-        });
+        enviarCarrito();   
     }
 
 
     selectBtnGuatemala.onclick = (e) => {
         e.preventDefault();
         bolsasCafe[3].calcularStock(selectGuatemala.value, `stock_atribute--${bolsasCafe[3].variedad}`);
-        
-
-
-        enviarCarrito(bolsasCafe[3].variedad, selectGuatemala.value, bolsasCafe[3].calcularPrecio(selectGuatemala.value));
-        console.log(carroCompras);
-
-        carroCompras.forEach(el => {
-            $("#articulos").append(
-                `
-                <h3>Bolsas de cafe ${el.variedad}</h3>
-                <p>Deseas llevar ${el.cantidad}</p>
-                <h4>Seran ${el.precio}$</h4>
-                `
-            )
-        });
-
+        enviarCarrito();
     }
 
 
@@ -250,19 +201,8 @@ $(() => {
         e.preventDefault();
         bolsasCafe[4].calcularStock(selectBrasil.value, `stock_atribute--${bolsasCafe[4].variedad}`);
         console.log(guardarCompra(bolsasCafe[4].variedad, selectBrasil.value));
+        enviarCarrito();
 
-        enviarCarrito(bolsasCafe[4].variedad, selectBrasil.value, bolsasCafe[4].calcularPrecio(selectBrasil.value));
-        console.log(carroCompras);
-
-        carroCompras.forEach(el => {
-            $("#articulos").append(
-                `
-                <h3>Bolsas de cafe ${el.variedad}</h3>
-                <p>Deseas llevar ${el.cantidad}</p>
-                <h4>Seran ${el.precio}$</h4>
-                `
-            )
-        });
     }
 
     // charge-btn enviará la información de los fondos al localStorage
