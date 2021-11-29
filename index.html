@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
@@ -29,11 +29,16 @@
         </section>
         <section id="carrito_compra" class="section_carrito">
             <button id="btn_openCarrito" type="submit">Abrir carrito</button>
-            <div id="articulos">
+            
+            <h2 class="title">Carrito de compras</h2>
+            <ol id="articulos">
                
+            </ol>
+            <div class="total-text">
+                <p>Total:</p>
+                <p id="total-price"></p>
             </div>
-            <h2>Carrito de compras</h2>
-            <button type="submit" id="compra_btn"></button>
+            <button type="submit" id="compra_btn">Comprar</button>
         </section>
         <div id="productos">
             <div id="product_data">
@@ -57,7 +62,7 @@
                             <option value="13">13</option>
                             <option value="14">14</option>
                         </select>
-                        <button id="btn_sumatra">Comprar</button>
+                        <button id="btn_sumatra">Añadir</button>
                         <button id="like_btn--sumatra">Like</button>
                     </div>
                     <div class="select_elements">
@@ -77,7 +82,7 @@
                             <option value="13">13</option>
                             <option value="14">14</option>
                         </select>
-                        <button id="btn_colombia">Comprar</button>
+                        <button id="btn_colombia">Añadir</button>
                         <button id="like_btn--colombia">Like</button>
                     </div>
                     <div class="select_elements">
@@ -97,7 +102,7 @@
                             <option value="13">13</option>
                             <option value="14">14</option>
                         </select>
-                        <button id="btn_peru">Comprar</button>
+                        <button id="btn_peru">Añadir</button>
                         <button id="like_btn--peru">Like</button>
                     </div>
                     <div class="select_elements">
@@ -117,7 +122,7 @@
                             <option value="13">13</option>
                             <option value="14">14</option>
                         </select>
-                        <button id="btn_guatemala">Comprar</button>
+                        <button id="btn_guatemala">Añadir</button>
                         <button id="like_btn--guatemala">Like</button>
                     </div>
                     <div class="select_elements">
@@ -137,7 +142,7 @@
                             <option value="13">13</option>
                             <option value="14">14</option>
                         </select>
-                        <button id="btn_brasil">Comprar</button>
+                        <button id="btn_brasil">Añadir</button>
                         <button id="like_btn--brasil">Like</button>
                     </div>
 

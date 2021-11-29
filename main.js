@@ -48,13 +48,6 @@ $(() => {
 
     }
 
-    class CarritoCompras {
-        constructor(variedad, cantidad, precio) {
-            this.variedad = variedad;
-            this.cantidad = cantidad;
-            this.precio = precio;
-        }
-    }
 
 
     //definimos las variables
@@ -93,7 +86,6 @@ $(() => {
 
 
 
-
     // jQuery section
 
     const likeSumatra = $("#like_btn--sumatra");
@@ -119,7 +111,7 @@ $(() => {
 
         let cafePrecio = document.createElement("p");
         cafePrecio.innerHTML = `${el.precio}`;
-        cafePrecio.setAttribute("class", "precio");
+        cafePrecio.setAttribute("class", "precio_p");
         document.getElementById("product_data").appendChild(cafePrecio);
 
         let cafeStock = document.createElement("p");
@@ -140,69 +132,109 @@ $(() => {
         return verificarMonto;
     }
 
-    const enviarCarrito = () => {
-        localStorage.setItem("carrito", JSON.stringify(bolsasCafe));
-        return carroCompras;
+    const verificarPrecioTotal = () => {
+        let montoResta = 0;
+        montoResta = JSON.parse(localStorage.getItem("totalCompra"));
+        return montoResta;
     }
 
 
+    const calcularResto = () => {
+        if (imprimirFondos() >= verificarPrecioTotal()){
+            $("#chargedWallet").append(`
+            <p>${imprimirFondos() - verificarPrecioTotal()}$</p>
+            `);
+            $("#chargedWallet p:nth-child(2)").css({
+                "display": "none",
+            });
+        }
+    }
+
+    // calcular precio total
+    const precioTotal = () => {
+        let precioTotal = 0;
+        $(".eachPrice").each(function(){
+            let precioItem = parseFloat($(this).text());
+            precioTotal = precioTotal + precioItem; 
+        })
+        $("#total-price").text(`${precioTotal}$`);
+        localStorage.setItem("totalCompra", JSON.stringify(precioTotal));
+    }
+
+   
+    const agregarItemCarrito = (a, b) => {
+        //buscamos datos
+        let nombre = a.variedad;
+        let cantidad = b.value; 
+        let precio = `<span class="eachPrice">${parseFloat(a.precio*cantidad)}</span>`;
+        let remove = `<button class="remove">X</button>`
+        if (a.stock == 0){
+            $("#articulos").append(`<li>No hay mas articulos del seleccionado  ${remove}</li>`);
+        }else {
+            $("#articulos").append(`<li>${cantidad} bolsas de cafe ${nombre} - $${precio}  ${remove}</li>`);
+        }    
+    }
 
 
     //definimos los eventos
 
-
-    /*estamos creando el carrito de compras, creamos un each para poder definir facilmente los valores del
-    array carroCompras en el DOM*/
-
     selectBtnSumatra.onclick = (e) => {
         e.preventDefault();
         bolsasCafe[0].calcularStock(selectSumtara.value, `stock_atribute--${bolsasCafe[0].variedad}`);
-        enviarCarrito();
-
-        // carroCompras.slice(1).forEach(el => {
-        //     $("#articulos").append(
-        //         `
-        //         <div id="nuevo_articulo">
-        //         <h3>Bolsas de cafe ${el.variedad}</h3>
-        //         <p>Deseas llevar ${el.cantidad}</p>
-        //         <h4>Seran ${el.precio}$</h4>
-        //         </div>
-        //         `
-        //     )
-            
-
-        // });
+        agregarItemCarrito(bolsasCafe[0],selectSumtara);
+        precioTotal();
+        $(".remove").on("click",function(){
+            $(this).parent().remove();
+            precioTotal();
+        })
     }
-    // soy rama
 
 
     selectBtnColombia.onclick = (e) => {
         e.preventDefault();
         bolsasCafe[1].calcularStock(selectColombia.value, `stock_atribute--${bolsasCafe[1].variedad}`);
-        enviarCarrito();
+        agregarItemCarrito(bolsasCafe[1],selectColombia);
+        precioTotal();
+        $(".remove").on("click",function(){
+            $(this).parent().remove();
+            precioTotal();
+        })
     }
 
 
     selectBtnPeru.onclick = (e) => {
         e.preventDefault();
         bolsasCafe[2].calcularStock(selectPeru.value, `stock_atribute--${bolsasCafe[2].variedad}`);
-        enviarCarrito();   
+        agregarItemCarrito(bolsasCafe[2],selectPeru);  
+        precioTotal();
+        $(".remove").on("click",function(){
+            $(this).parent().remove();
+            precioTotal();
+        })
     }
 
 
     selectBtnGuatemala.onclick = (e) => {
         e.preventDefault();
         bolsasCafe[3].calcularStock(selectGuatemala.value, `stock_atribute--${bolsasCafe[3].variedad}`);
-        enviarCarrito();
+        agregarItemCarrito(bolsasCafe[3],selectGuatemala);
+        precioTotal();
+        $(".remove").on("click",function(){
+            $(this).parent().remove();
+            precioTotal();
+        })
     }
 
 
     selectBtnBrasil.onclick = (e) => {
         e.preventDefault();
         bolsasCafe[4].calcularStock(selectBrasil.value, `stock_atribute--${bolsasCafe[4].variedad}`);
-        console.log(guardarCompra(bolsasCafe[4].variedad, selectBrasil.value));
-        enviarCarrito();
-
+        agregarItemCarrito(bolsasCafe[4],selectBrasil);
+        precioTotal();
+        $(".remove").on("click",function(){
+            $(this).parent().remove();
+            precioTotal();
+        })
     }
 
     // charge-btn enviará la información de los fondos al localStorage
@@ -225,6 +257,14 @@ $(() => {
         $("#chargedWallet p:first-child").css({
             "display": "none",
         });
+    })
+
+    $("#compra_btn").on("click", (e) =>{
+        e.preventDefault();
+        calcularResto(precioTotal());
+        $(e.target).addClass("hide");
+        $("#carrito_compra").append(`
+        Muchísimas gracas por tu compra`);
     })
 
 
@@ -267,15 +307,12 @@ $(() => {
     $("#btn_openCarrito").on("click", function (e) {
         e.preventDefault();
         let carrito_section = $("#carrito_compra");
-        carrito_section.toggleClass("seccion_carrito--inactive");
+        carrito_section.toggleClass("seccion_carrito--active");
         $("#btn_openCarrito").toggleClass("btn_openCarrito--active");
-        $("#carrito_compra h2").animate({
-            "opacity": "0.6"}
-        );
-
+        $(".title").toggleClass("title_animation");
     })
 
-
+   
 })
 
 
