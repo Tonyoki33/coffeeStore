@@ -1,25 +1,32 @@
+#section_products--grid {
+  display: grid;
+  grid-template-columns: 15rem 15rem 15rem;
+  grid-column-gap: 2rem;
+  grid-row-gap: 2rem; }
+
 h1 {
-  color: #E8E8CC;
-  text-align: center; }
+  color: #F4EEA9;
+  text-align: center;
+  font-weight: 800; }
 
 h2 {
-  color: #E8E8CC;
+  color: #F4EEA9;
   padding-top: 5rem;
   margin: 0; }
 
 h3 {
-  color: #E8E8CC;
+  color: #F4EEA9;
   padding-top: 0;
   margin: 0; }
 
 p {
-  color: #0B4619; }
+  color: #064635; }
 
 #wallet h3 {
-  color: #0B4619; }
+  color: #064635; }
 
 .title {
-  color: #0B4619; }
+  color: #064635; }
 
 #productos p {
   margin: 0rem;
@@ -27,40 +34,71 @@ p {
   color: #E8E8CC; }
 
 #productos .precio_p {
-  color: #FFCC1D;
-  font-weight: 600;
+  color: #F0BB62;
+  font-weight: 800;
   font-size: 2rem; }
 
+a {
+  text-decoration: none;
+  font-weight: 200;
+  color: #F4EEA9; }
+
 .user_comments h2 {
-  color: #FFCC1D; }
+  color: #519259; }
 
 .user_comments p {
   padding: 2rem;
   text-align: center;
-  color: #E8E8CC; }
+  color: #064635; }
+
+.itmes_historial--title {
+  padding: 0;
+  color: #064635; }
 
 body {
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  background-color: #0B4619; }
+  background-color: #519259;
+  font-family: 'Readex Pro', sans-serif; }
 
 /*Vamos a dar estilo a los productos*/
-#productos {
-  display: flex;
-  flex-flow: row;
-  padding: 5rem;
-  text-align: center;
-  background-color: #116530;
-  height: 80rem; }
-
-#product_data {
+.card {
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  margin-left: 7rem; }
+  width: 15rem;
+  height: 20rem;
+  background: #F0BB62;
+  box-shadow: 2px 2px 8px #064635;
+  border-radius: 5px;
+  transition: transform 500ms ease; }
+
+.card:hover {
+  transform: scale(1.1); }
+
+.card-title {
+  position: relative;
+  color: #064635;
+  font-weight: 800;
+  top: 0;
+  padding: 0.2rem 0; }
+
+.card-img {
+  position: relative;
+  top: 0px;
+  width: 80px;
+  padding: 0.2rem 0; }
+
+.card-p {
+  margin: 0;
+  padding: 0.2rem 0; }
+
+.card-price {
+  color: #064635;
+  padding: 0.2rem 0; }
 
 #select {
   display: flex;
@@ -69,46 +107,74 @@ body {
   width: 8rem;
   margin: 0 0 4rem 3rem; }
 
+.product_selector {
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid #064635;
+  background: #F4EEA9;
+  text-decoration: none;
+  border-radius: 5px;
+  color: #064635; }
+
+.product_selector option {
+  text-align: center; }
+
+.card-btn {
+  padding: 0.5rem;
+  border: 1px solid #064635;
+  background: #F4EEA9;
+  text-decoration: none;
+  border-radius: 5px;
+  color: #064635; }
+
+.card:hover .card-btn:hover {
+  border: #519259 3px solid;
+  border-radius: 7px;
+  transition: animation 500ms ease;
+  animation: spin 2s forwards ease infinite; }
+
 /* Espacio de seleccion en los productos*/
 .select_elements {
   height: 1rem;
-  padding: 8rem 0rem; }
-
-.select_form {
-  padding: 0; }
+  padding: 0rem 0rem; }
 
 /*Like button active*/
 .like_btn--active {
-  background-color: #0B4619;
+  background-color: #064635;
   color: #E8E8CC; }
 
 .section {
   display: flex; }
 
 #wallet {
+  border-radius: 8px;
   padding: 2rem;
-  width: 20rem;
+  width: 28rem;
   text-align: center;
-  background-color: #FFCC1D; }
+  background-color: #F0BB62; }
 
 .walletOff {
   display: none; }
 
 .chargedWallet_off {
+  border-radius: 8px;
   width: 10rem;
   margin-right: 3rem;
   padding: 2rem;
   text-align: center;
-  background-color: #FFCC1D; }
+  background-color: #F0BB62; }
 
 .chargedWallet_on {
-  width: 37rem;
+  border-radius: 8px;
+  width: 45rem;
   margin-right: 0;
   padding: 2rem;
   text-align: center;
-  background-color: #FFCC1D; }
+  background-color: #F0BB62; }
 
 #monto-carga {
+  border-radius: 4px;
   text-align: center;
   width: 13rem; }
 
@@ -123,36 +189,65 @@ body {
   margin: 3rem 0;
   padding: 0.5rem; }
 
-a {
-  text-decoration: none;
-  color: #E8E8CC; }
-
 /* carrito */
 .section_carrito {
+  border-radius: 8px;
   display: flex;
   flex-flow: column;
-  height: 20px;
+  height: 26px;
   overflow: hidden;
   margin: 3rem 0;
   padding: 2rem;
   text-align: center;
-  background-color: #FFCC1D; }
+  background-color: #F0BB62; }
 
 .seccion_carrito--active {
+  border-radius: 8px;
   position: relative;
   height: 100%;
-  width: 37rem;
   margin: 3rem 0;
   padding: 2rem;
   overflow: visible;
-  background-color: #FFCC1D; }
+  background-color: #F0BB62; }
+
+#btn_openCarrito {
+  padding: 0.5rem;
+  border: 1px solid #064635;
+  background: #F4EEA9;
+  text-decoration: none;
+  border-radius: 5px;
+  color: #064635; }
+
+#btn_openCarrito:hover {
+  border: #519259 3px solid;
+  border-radius: 7px;
+  transition: animation 500ms ease;
+  animation: spin 2s forwards ease infinite; }
 
 .btn_openCarrito--active {
-  background-color: #0B4619;
-  color: seashell; }
+  padding: 0.5rem;
+  border: 1px solid #064635;
+  background: #519259;
+  text-decoration: none;
+  border-radius: 5px;
+  color: #064635; }
 
 .hide {
   display: none; }
+
+.compra-btn {
+  padding: 0.5rem;
+  border: 1px solid #064635;
+  background: #F4EEA9;
+  text-decoration: none;
+  border-radius: 5px;
+  color: #064635; }
+
+.compra-btn:hover {
+  border: #519259 3px solid;
+  border-radius: 7px;
+  transition: animation 500ms ease;
+  animation: spin 2s forwards ease infinite; }
 
 /* Creamos clases para mostrar los nuevos comentarios de usuarios llamados desde una api*/
 #comentariosUsuarios {
@@ -161,13 +256,26 @@ a {
   justify-content: center;
   align-items: center; }
 
+.itmes_historial {
+  display: flex;
+  flex-flow: column;
+  width: 20rem;
+  text-align: center;
+  justify-content: center;
+  margin: 3rem 0;
+  background: #F0BB62;
+  box-shadow: 2px 2px 8px #064635;
+  border-radius: 5px; }
+
 .user_comments {
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center;
   margin: 3rem 0;
-  background-color: #116530; }
+  background: #F0BB62;
+  box-shadow: 2px 2px 8px #064635;
+  border-radius: 5px; }
 
 .title_animation {
   animation: basketTitle 3s ease 0.5s; }
@@ -177,3 +285,13 @@ a {
     opacity: 100%; }
   100% {
     opacity: 70%; } }
+
+@keyframes spin {
+  0% {
+    border-top-color: transparent; }
+  33.33% {
+    border-right-color: transparent; }
+  66.66% {
+    border-bottom-color: transparent; }
+  100% {
+    border-left-color: transparent; } }

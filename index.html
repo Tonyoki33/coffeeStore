@@ -5,7 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Breakfast Café</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;400;700&family=Road+Rage&family=Roboto+Mono:wght@300;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
 </head>
 
@@ -38,15 +41,13 @@
                 <p>Total:</p>
                 <p id="total-price"></p>
             </div>
-            <button type="submit" id="compra_btn">Comprar</button>
+            <button type="submit" class="compra-btn" id="compra_btn">Comprar</button>
         </section>
-        <div id="productos">
-            <div id="product_data">
-            </div>
-            <div id="select">
+        <section id="section_products--grid">
+            <div class="card product-1">
                 <form action="" class="select_form">
                     <div class="select_elements">
-                        <select name="" id="select_sumatra">
+                        <select name="" class="product_selector" id="select_sumatra">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -62,11 +63,40 @@
                             <option value="13">13</option>
                             <option value="14">14</option>
                         </select>
-                        <button id="btn_sumatra">Añadir</button>
+                        <button id="btn_sumatra" class="card-btn">Añadir</button>
                         <button id="like_btn--sumatra">Like</button>
                     </div>
+                </form>
+            </div>
+            <div class="card product-2">
+                <form action="" class="select_form">
                     <div class="select_elements">
-                        <select name="" id="select_colombia">
+                            <select name="" class="product_selector" id="select_colombia">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                            </select>
+                            <button id="btn_colombia" class="card-btn">Añadir</button>
+                            <button id="like_btn--colombia">Like</button>
+                        </div>
+                </form>
+                
+            </div>
+            <div class="card product-3">
+                <form action="" class="select_form">
+                    <div class="select_elements">
+                        <select name="" class="product_selector" id="select_peru">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -82,31 +112,16 @@
                             <option value="13">13</option>
                             <option value="14">14</option>
                         </select>
-                        <button id="btn_colombia">Añadir</button>
-                        <button id="like_btn--colombia">Like</button>
-                    </div>
-                    <div class="select_elements">
-                        <select name="" id="select_peru">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                            <option value="13">13</option>
-                            <option value="14">14</option>
-                        </select>
-                        <button id="btn_peru">Añadir</button>
+                        <button id="btn_peru" class="card-btn">Añadir</button>
                         <button id="like_btn--peru">Like</button>
                     </div>
+                </form>
+                
+            </div>
+            <div class="card product-4">
+                <form action="" class="select_form">
                     <div class="select_elements">
-                        <select name="" id="select_guatemala">
+                        <select name="" class="product_selector" id="select_guatemala">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -122,11 +137,16 @@
                             <option value="13">13</option>
                             <option value="14">14</option>
                         </select>
-                        <button id="btn_guatemala">Añadir</button>
+                        <button id="btn_guatemala" class="card-btn">Añadir</button>
                         <button id="like_btn--guatemala">Like</button>
                     </div>
+                </form>
+                
+            </div>
+            <div class="card product-5">
+                <form action="" class="select_form">
                     <div class="select_elements">
-                        <select name="" id="select_brasil">
+                        <select name="" class="product_selector" id="select_brasil">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -142,25 +162,25 @@
                             <option value="13">13</option>
                             <option value="14">14</option>
                         </select>
-                        <button id="btn_brasil">Añadir</button>
+                        <button id="btn_brasil" class="card-btn">Añadir</button>
                         <button id="like_btn--brasil">Like</button>
                     </div>
 
-
-
-
                 </form>
+
+                
             </div>
-        </div>
+        </section>
+
         <div class="link">
             <a href="historial.html">Ver mi historial de compra</a>
         </div>
        
         <div id="datos">
-
+            
         </div>
 
-    </main>
+    </section>
     <script src="https://use.fontawesome.com/a9074f2a41.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="main.js"></script>
